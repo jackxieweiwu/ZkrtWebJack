@@ -8,9 +8,8 @@
 package routers
 
 import (
-	"ZkrtWebJack/controllers"
-
 	"github.com/astaxie/beego"
+	"ZkrtWebJack/controllers"
 )
 
 func init() {
@@ -29,4 +28,12 @@ func init() {
 		),
 	)
 	beego.AddNamespace(ns)
+
+	beego.Router("/", &controllers.MainController{})
+	beego.Router("/v1/drone_gps", &controllers.ApiController{},"GET,POST:DroneSetGps")
+	beego.Router("/v1/drone_message", &controllers.ApiController{},"GET,POST:DroneSetMessage")
+	beego.Router("/v1/drone_id", &controllers.ApiController{},"GET,POST:DroneId")
+	beego.Router("/views/index", &controllers.IndexController{},"GET:GetLogin")
+	beego.Router("/views/index", &controllers.IndexController{}, "POST:LoginPost")
+	beego.Router("/views/success", &controllers.IndexController{}, "GET:Successs")
 }

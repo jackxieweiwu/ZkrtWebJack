@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-
 	"github.com/astaxie/beego/orm"
 )
 
@@ -27,6 +26,14 @@ func init() {
 	orm.RegisterModel(new(ZkrtUser))
 }
 
+/*func FindUserByToken(token string) (bool, ZkrtUser) {
+	o := orm.NewOrm()
+	var user ZkrtUser
+	err := o.QueryTable(user).Filter("Token", token).One(&user)
+	return err != orm.ErrNoRows, user
+}*/
+
+
 // AddZkrtUser insert a new ZkrtUser into database and returns
 // last inserted Id on success.
 func AddZkrtUser(m *ZkrtUser) (id int64, err error) {
@@ -44,6 +51,14 @@ func GetZkrtUserById(id int) (v *ZkrtUser, err error) {
 		return v, nil
 	}
 	return nil, err
+}
+
+//登陆获取基本的信息
+func GetWaiterForLogin(username string, password string) (bool, ZkrtUser) {
+	o := orm.NewOrm()
+	var user ZkrtUser
+	err := o.QueryTable(user).Filter("Zkrt_user", username).Filter("Zkrt_password", password).One(&user)
+	return err != orm.ErrNoRows, user
 }
 
 // GetAllZkrtUser retrieves all ZkrtUser matches certain condition. Returns empty list if
@@ -152,4 +167,8 @@ func DeleteZkrtUser(id int) (err error) {
 		}
 	}
 	return
+}
+
+func RegisterDataBase() {
+	orm.RegisterDataBase("default", "mysql", "root:123456@tcp(127.0.0.1:3306)/zkrt_db?charset=utf8")
 }
