@@ -1,4 +1,4 @@
-FROM golang:1.8
+FROM golang:latest
 
 MAINTAINER Razil "xieweiwu@zkrtuav.com"
 
