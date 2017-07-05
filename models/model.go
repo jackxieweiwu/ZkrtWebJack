@@ -14,10 +14,10 @@ func init() {
 	globalnum = 100000000
 }
 
-func GetMD5(lurl string) string {
+func GetMD5(droneId string) string {
 	h := md5.New()
 	salt1 := "salt4shorturl"
-	io.WriteString(h, lurl+salt1)
+	io.WriteString(h, droneId+salt1)
 	urlmd5 := fmt.Sprintf("%x", h.Sum(nil))
 	return urlmd5
 }

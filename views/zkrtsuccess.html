@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+        <title>Zkrt</title>
+        <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+        <script src="http://cache.amap.com/lbs/static/es5.min.js"></script>
+        <script src="http://webapi.amap.com/maps?v=1.3&key=471fdfd1038ae0f3ea42d9440884fc58&&plugin=AMap.Scale,AMap.OverView,AMap.ToolBar"></script>
+        <script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
+        <link rel="stylesheet" href="/static/css/success_map.css" type="text/css" />
+        <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="http://j.laohe360.net/css/pub.css"/>
+        <script charset="utf-8" type="text/javascript" src="http://www.php100.com/statics/js//php100/js/jquery.js"></script>
+        <!--<script src="/static/js/TcPlayer.js"></script>-->
+        <script src="//imgcache.qq.com/open/qcloud/video/vcplayer/TcPlayer-2.2.0.js" charset="utf-8"></script>;
+        <script src="/static/js/Map_Coordinate_conversion.js"></script>
+    </head>
+
+    <body>
+        <div style="width: 15%;background-color: #00b3ca;float: left; height: 100%;">
+            <h1 id="h1_title">Drone Message</h1>
+            <table id="table_drone_message" >
+                <tr>
+                    <td>经度:</td>
+                    <td id="lat_drone_msg">N/N</td>
+                </tr>
+                <tr>
+                    <td>纬度:</td>
+                    <td id="lon_drone_msg">N/N</td>
+                </tr>
+                <tr>
+                    <td>高度:</td>
+                    <td id="alt_drone_msg">N/N</td>
+                </tr>
+                <tr>
+                    <td>R:</td>
+                    <td id="r_drone_msg">N/N</td>
+                </tr>
+                <tr>
+                    <td>P:</td>
+                    <td id="p_drone_msg">N/N</td>
+                </tr>
+                <tr>
+                    <td>Y:</td>
+                    <td id="y_drone_msg">N/N</td>
+                </tr>
+            </table>
+
+            <h1 id="h1_title">Moudle Message</h1>
+            <table id="table_drone_message">
+                <tr>
+                    <td>温度:</td>
+                    <td id="tmp_moudle_msg">N/N</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>抛头:</td>
+                    <td id="ram_moudle_msg">N/N</td>
+                    <td></td>
+                </tr>
+                <tr >
+                    <td>气体:</td>
+                    <td id="gas_moudle_msg">N/N</td>
+                    <td style="width: 1%;"  onclick="javascript:gas_onoe()"><img width="24px" height="24px" src="/static/img/down.png"></td>
+                </tr>
+                        <tr id="tr_co">
+                            <td>CO:</td>
+                            <td id="gas_co_msg">N/N</td>
+                        </tr>
+                        <tr id="tr_nh3">
+                            <td>NH3:</td>
+                            <td id="gas_nh3_msg">N/N</td>
+                        </tr>
+                        <tr id="tr_h2s">
+                            <td>H2S:</td>
+                            <td id="gas_h2s_msg">N/N</td>
+                        </tr>
+                        <tr id="tr_co2">
+                            <td>CO2:</td>
+                            <td id="gas_co2_msg">N/N</td>
+                        </tr>
+                        <tr id="tr_voc">
+                            <td>VOC:</td>
+                            <td id="gas_voc_msg">N/N</td>
+                        </tr>
+                        <tr id="tr_cl2">
+                            <td>CL2:</td>
+                            <td id="gas_cl2_msg">N/N</td>
+                        </tr>
+                        <tr id="tr_so2">
+                            <td>SO2:</td>
+                            <td id="gas_so2_msg">N/N</td>
+                        </tr>
+                        <tr id="tr_ch4">
+                            <td>CH4:</td>
+                            <td id="gas_ch4_msg">N/N</td>
+                        </tr>
+
+
+                <tr>
+                    <td>喊话:</td>
+                    <td id="prop_moudle_msg">N/N</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>照射:</td>
+                    <td id="expo_moudle_msg">N/N</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>避障:</td>
+                    <td id="obst_moudle_msg">N/N</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>双光:</td>
+                    <td id="doul_moudle_msg">N/N</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>3D:</td>
+                    <td id="3d_moudle_msg">N/N</td>
+                    <td></td>
+                </tr>
+            </table>
+
+            <h1 id="h1_title">Video Message</h1>
+            <div id="video-container" style="width: 100%; background-color: black;height: 150px;"></div>
+            <script type="text/javascript" src="/static/js/video_map.js"></script>
+
+            <script type="text/javascript">
+                $(function () {
+                    var ws = new WebSocket('ws://'+window.location.host+'/ws/dronestatus')
+                    ws.onmessage = function (e) {
+                        var obj_status = new Function("return" + event.data)();
+                        var objstatus = JSON.parse(obj_status.MessageSta)
+                        if(objstatus.DroneTmp == "1"){
+                            $("#tmp_moudle_msg").text("Yes");
+                        }else{
+                            $("#tmp_moudle_msg").text("No");
+                        }
+                        if(objstatus.DroneRam == "1"){
+                            $("#ram_moudle_msg").text("Yes");
+                        }else{
+                            $("#ram_moudle_msg").text("No");
+                        }
+                        if(objstatus.DroneGas == "1"){
+                            $("#gas_moudle_msg").text("Yes");
+                        }else{
+                            $("#gas_moudle_msg").text("No");
+                        }
+                        if(objstatus.DroneProp == "1"){
+                            $("#prop_moudle_msg").text("Yes");
+                        }else{
+                            $("#prop_moudle_msg").text("No");
+                        }
+                        if(objstatus.DroneExpo == "1"){
+                            $("#expo_moudle_msg").text("Yes");
+                        }else{
+                            $("#expo_moudle_msg").text("No");
+                        }
+                        if(objstatus.DroneObst == "1"){
+                            $("#obst_moudle_msg").text("Yes");
+                        }else{
+                            $("#obst_moudle_msg").text("No");
+                        }
+                        if(objstatus.DroneDoul == "1"){
+                            $("#doul_moudle_msg").text("Yes");
+                        }else{
+                            $("#doul_moudle_msg").text("No");
+                        }
+                        if(objstatus.Drone3D == "1"){
+                            $("#3d_moudle_msg").text("Yes");
+                        }else{
+                            $("#3d_moudle_msg").text("No");
+                        }
+                    }
+                })
+            </script>
+        </div>
+        <div style="width: 85%;height: 100%; float: right">
+            <div id="map_div" style="width: 100%;height: 100%;"/>
+            <script type="text/javascript" src="/static/js/map.js"></script>
+            <script type="text/javascript" src="/static/js/marker_webscoker.js"></script>
+            <div class="button-group">
+                <input type="button" class="button" value="距离量测" onClick="javascript:startRuler1()"/>
+                <input type="button" class="button" value="面积测量" id="acreage" onClick="javascript:startRuler3()"/>
+                <input type="button" class="button" value="清除痕迹"  onClick="javascript:startRuler2()"/>
+            </div>
+            <div id="tip"></div>
+        </div>
+        <script src="/static/js/reload.min.js"></script>
+    </body>
+</html>

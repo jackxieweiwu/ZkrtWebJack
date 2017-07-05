@@ -1,0 +1,35 @@
+#h1_title {
+    font-family: "Merriweather", serif;
+    font-size: 32px;
+    color: aliceblue;
+    text-align: center;
+}
+
+tr,td{
+    text-align: center;
+    color: aliceblue;
+}
+
+tr td{
+    width: 50%;
+}
+
+div,body{
+    margin: 0;
+    padding: 0;
+}
+
+#table_drone_message{
+    width: 100%;
+}
+
+#tr_co,#tr_ch4,#tr_cl2,#tr_co2,#tr_h2s,#tr_nh3,#tr_so2,#tr_voc{
+    display: none;
+    width: 180%;
+}
+
+#tr_co td,#tr_ch4 td,#tr_cl2 td,#tr_co2 td,#tr_h2s td,#tr_nh3 td,#tr_so2 td,#tr_voc td{
+    width: 100%;
+    text-align: center;
+    color: #122b40;
+}

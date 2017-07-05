@@ -30,10 +30,19 @@ func init() {
 	beego.AddNamespace(ns)
 
 	beego.Router("/", &controllers.MainController{})
-	beego.Router("/v1/drone_gps", &controllers.ApiController{},"GET,POST:DroneSetGps")
+	beego.Router("/ws", &controllers.MywebSockerControllers{},)
+	beego.Router("/ws/dronestatus", &controllers.MywebSockerControllers{},"GET,POST:GetMoudleStatus")
+	beego.Router("/v1/drone_id", &controllers.ApiController{},"GET,POST:GetDroneId")
 	beego.Router("/v1/drone_message", &controllers.ApiController{},"GET,POST:DroneSetMessage")
-	beego.Router("/v1/drone_id", &controllers.ApiController{},"GET,POST:DroneId")
 	beego.Router("/views/index", &controllers.IndexController{},"GET:GetLogin")
-	beego.Router("/views/index", &controllers.IndexController{}, "POST:LoginPost")
+	beego.Router("/views/index", &controllers.IndexController{}, "GET,POST:LoginPost")
+	beego.Router("/views/error", &controllers.IndexController{}, "GET,POST:GetError")
 	beego.Router("/views/success", &controllers.IndexController{}, "GET:Successs")
+	beego.Router("/drone/status", &controllers.ApiController{}, "GET,POST:SetMoudleValuesStatus")
+	beego.Router("/drone/gas", &controllers.ApiController{}, "GET,POST:SetGsaValue")
+
+	beego.Router("/v1/login", &controllers.IndexController{}, "GET:LoginPy")
+	beego.Router("/v1/pyApiDroneMsg", &controllers.PyclientController{}, "GET,POST:GetDroneMessage")
+	beego.Router("/v1/pyApiMoudleMsg", &controllers.PyclientController{}, "GET,POST:GetMoudleMessage")
+	beego.Router("/v1/pyApiGasMsg", &controllers.PyclientController{}, "GET,POST:GetGasMessage")
 }

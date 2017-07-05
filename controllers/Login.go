@@ -12,11 +12,16 @@ type IndexController struct {
 }
 
 func (index *IndexController) GetLogin() {
-	index.TplName = "index.html"
+	index.TplName = "home.html"
+}
+
+func (index *IndexController) GetError() {
+	index.TplName = "error-page.html"
 }
 
 func (index *IndexController) Successs() {
-	index.TplName = "success.tpl"
+	//index.TplName = "success.tpl"
+	index.TplName = "zkrtsuccess.html"
 }
 
 func (index *IndexController) LoginPost() {
@@ -29,7 +34,16 @@ func (index *IndexController) LoginPost() {
 	} else {
 		//flash.Error("用户名或密码错误")
 		//flash.Store(&index.Controller)
-		index.Redirect("index", 303)
+		index.Redirect("error", 303)
 	}
+}
+
+func (index *IndexController) LoginPy() {
+	//flash := beego.NewFlash()
+	username, password := index.Input().Get("username"), index.Input().Get("password")
+	bool,user:= models.GetWaiterForLogin(username, password);
+	fmt.Println(user)
+	index.Data["json"] = bool
+	index.ServeJSON()
 }
 

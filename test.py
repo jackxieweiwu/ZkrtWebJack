@@ -17,6 +17,9 @@ def testApi():
         drone_message = requests.get("http://localhost:8080/v1/drone_message/",
                                      params={'drone_alt': '150', 'drone_y': '3.3', 'drone_r': '0.0',
                                              'drone_p': '1.2'}).text;
+
+                                             drone_login = requests.get("http://192.168.1.132:8080/v1/login/",
+                                                                          params={'username': 'jack', 'password': 'jack'}).text;
         if (len(gps) > 35):
             print "---------*****GPS*******------------"
             print gps
