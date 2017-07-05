@@ -3,7 +3,7 @@
 
  push `ffmpeg -re -i demo.flv -c copy -f flv rtmp://localhost/live/movie`
 
-# gortmp
+# Zkrt
 
 server :
 go run main.go
@@ -31,7 +31,7 @@ go run main.go
 ## 延时效果
 
 1. 局域网内延时大概在0.5秒左右.
-## gortmp 目录
+## Zkrt 目录
 
 
 * avformat目录 : 存放音视频格式的一些结构体.
@@ -42,7 +42,7 @@ go run main.go
 * rtmplog目录  : 日志.
 * util目录     : 公共函数.
 
-## gortmp server 流程
+## Zkrt server 流程
 
 1. 监听1935端口.
 2. 握手(handshake).
