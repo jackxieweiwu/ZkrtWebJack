@@ -4,18 +4,13 @@
  push `ffmpeg -re -i demo.flv -c copy -f flv rtmp://localhost/live/movie`
 
 # Zkrt
-
-server :
-go run main.go
-
-## 客户端(客户端机器IP地址: 192.168.2.99)
+## 客户端
 
 1. 使用ffmpeg推送桌面流去服务器.
 
     ffmpeg -report -f dshow -i audio="virtual-audio-capturer" -f dshow -i video="screen-capture-recorder" -vcodec libx264 -acodec aac -s 1920*1080 -r 25 -g 25 -pix_fmt yuv420p -preset veryfast -tune zerolatency -f flv rtmp://192.168.2.100/myapp/mystream
    
-
-## 服务器(服务器IP地址: 192.168.2.100)
+## 服务器
 
 1. 直接运行(需要安装golang环境)。
 
