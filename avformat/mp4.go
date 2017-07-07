@@ -1,7 +1,7 @@
 package avformat
 
 import (
-	"../util"
+	"ZkrtWebJack/util"
 )
 
 type MP4 interface {

@@ -6,7 +6,7 @@ import (
 	"errors"
 	"fmt"
 
-	"../util"
+	"ZkrtWebJack/util"
 )
 
 // Action Message Format -- AMF 0

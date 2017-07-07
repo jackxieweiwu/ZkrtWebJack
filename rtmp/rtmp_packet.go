@@ -1,7 +1,7 @@
 package rtmp
 
 import (
-	"../avformat"
+	"ZkrtWebJack/avformat"
 	"fmt"
 )
 

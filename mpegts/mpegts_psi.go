@@ -1,7 +1,7 @@
 package mpegts
 
 import (
-	"../util"
+	"ZkrtWebJack/util"
 	"errors"
 	"fmt"
 	"io"

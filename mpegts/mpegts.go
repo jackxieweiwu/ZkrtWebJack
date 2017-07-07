@@ -1,8 +1,8 @@
 package mpegts
 
 import (
-	"../rtmplog"
-	"../util"
+	"ZkrtWebJack/rtmplog"
+	"ZkrtWebJack/util"
 	"bytes"
 	"errors"
 	"fmt"

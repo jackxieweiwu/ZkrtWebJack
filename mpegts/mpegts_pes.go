@@ -1,8 +1,8 @@
 package mpegts
 
 import (
-	"../avformat"
-	"../util"
+	"ZkrtWebJack/avformat"
+	"ZkrtWebJack/util"
 	"bytes"
 	"errors"
 	"fmt"

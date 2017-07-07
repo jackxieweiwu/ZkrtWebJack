@@ -8,8 +8,8 @@ import (
 	"log"
 	"flag"
 	_"ZkrtWebJack/controllers"
-	"./config"
-	"./rtmp"
+	"ZkrtWebJack/config"
+	"ZkrtWebJack/rtmp"
 )
 
 

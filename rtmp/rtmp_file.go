@@ -1,11 +1,11 @@
 package rtmp
 
 import (
-	"../avformat"
+	"ZkrtWebJack/avformat"
 	//"../config"
-	"../hls"
-	"../mpegts"
-	"../util"
+	"ZkrtWebJack/hls"
+	"ZkrtWebJack/mpegts"
+	"ZkrtWebJack/util"
 	"bytes"
 	"errors"
 	//"fmt"

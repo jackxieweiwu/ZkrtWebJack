@@ -1,7 +1,7 @@
 package config
 
 import (
-	"../util"
+	"ZkrtWebJack/util"
 	"errors"
 	"os"
 	"strconv"
