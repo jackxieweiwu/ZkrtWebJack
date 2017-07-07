@@ -25,7 +25,7 @@ func main() {
 		beego.BConfig.WebConfig.StaticDir["/swagger"] = "swagger"
 	}
 	//orm.Debug = true
-	beego.Run()
+	go beego.Run()
 
 
 	var err error
