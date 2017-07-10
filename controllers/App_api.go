@@ -4,7 +4,7 @@ import (
 	"github.com/astaxie/beego"
 	//"github.com/astaxie/beego/cache"
 	"ZkrtWebJack/models"
-	"livego/utils/uid"
+	"ZkrtWebJack/util/uid"
 )
 
 /*var (
