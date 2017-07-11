@@ -29,7 +29,8 @@ func main() {
 
 
 	var err error
-	/*if err = InitAppConfig(); err != nil {
+	/*if err = InitAppConfig();
+		err != nil {
 		return
 	}*/
 	l := ":1935"
