@@ -2,15 +2,15 @@
   <library name="GOPATH &lt;ZkrtWebJack&gt;">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/../github.com" />
+      <root url="file://$PROJECT_DIR$/../livego" />
       <root url="file://$PROJECT_DIR$/../bbllive" />
       <root url="file://$PROJECT_DIR$/../gortmp" />
-      <root url="file://$PROJECT_DIR$/../livego" />
     </CLASSES>
     <SOURCES>
       <root url="file://$PROJECT_DIR$/../github.com" />
+      <root url="file://$PROJECT_DIR$/../livego" />
       <root url="file://$PROJECT_DIR$/../bbllive" />
       <root url="file://$PROJECT_DIR$/../gortmp" />
-      <root url="file://$PROJECT_DIR$/../livego" />
     </SOURCES>
     <excluded>
       <root url="file://$PROJECT_DIR$" />
