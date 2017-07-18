@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/zkrtWebJack.iml" filepath="$PROJECT_DIR$/.idea/zkrtWebJack.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ZkrtWebJack.iml" filepath="$PROJECT_DIR$/.idea/ZkrtWebJack.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../zkrtWebJack/.idea/zkrtWebJack.iml" filepath="$PROJECT_DIR$/../zkrtWebJack/.idea/zkrtWebJack.iml" />
     </modules>
   </component>
 </project>

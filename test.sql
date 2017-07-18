@@ -1,4 +1,4 @@
-create database zkrt_db;
+#create database zkrt_db;
 
 USE zkrt_db;
 

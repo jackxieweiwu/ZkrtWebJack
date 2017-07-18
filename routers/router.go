@@ -41,7 +41,7 @@ func init() {
 	beego.Router("/drone/status", &controllers.ApiController{}, "GET,POST:SetMoudleValuesStatus")
 	beego.Router("/drone/gas", &controllers.ApiController{}, "GET,POST:SetGsaValue")
 
-	beego.Router("/v1/login", &controllers.IndexController{}, "GET:LoginPy")
+	beego.Router("/v1/login", &controllers.IndexController{}, "POST,GET:LoginPy")
 	beego.Router("/v1/pyApiDroneMsg", &controllers.PyclientController{}, "GET,POST:GetDroneMessage")
 	beego.Router("/v1/pyApiMoudleMsg", &controllers.PyclientController{}, "GET,POST:GetMoudleMessage")
 	beego.Router("/v1/pyApiGasMsg", &controllers.PyclientController{}, "GET,POST:GetGasMessage")

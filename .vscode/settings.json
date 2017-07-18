@@ -13,7 +13,7 @@
     "go.formatOnSave": true,
     "go.formatTool": "goreturns",
     "go.formatFlags": [],
-    "go.goroot": "D:/Donview/Go/source_code",
-    "go.gopath": "D:/Donview/Go/shared_package",
+    "go.goroot": "/usr/local/go/",
+    "go.gopath": "/home/jack/goglandProjects",
     "go.gocodeAutoBuild": false
 }

@@ -1,6 +1,8 @@
 package controllers
 
-import "github.com/astaxie/beego"
+import (
+	"github.com/astaxie/beego"
+)
 
 type PyclientController struct {
 	beego.Controller
@@ -9,6 +11,7 @@ type PyclientController struct {
 func (this*PyclientController)GetDroneMessage()  {
 	web := this.Input().Get("web")
 	beego.Info(web)
+
 	if web=="DroneMsg"{
 		this.Data["json"] = result_dronemsg
 	}else{
